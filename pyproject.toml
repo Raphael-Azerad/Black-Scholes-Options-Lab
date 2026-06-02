@@ -1,0 +1,44 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "black-scholes-options-lab"
+version = "0.1.0"
+description = "A Streamlit options analytics lab centered on Black-Scholes pricing, Greeks, volatility, sensitivities, and payoff diagrams."
+readme = "README.md"
+requires-python = ">=3.9"
+license = { text = "MIT" }
+authors = [{ name = "Raphael Azerad" }]
+dependencies = [
+    "streamlit>=1.32",
+    "pandas>=2.0",
+    "numpy>=1.24",
+    "scipy>=1.10",
+    "plotly>=5.18",
+    "yfinance>=0.2.36",
+]
+
+[project.optional-dependencies]
+dev = ["pytest>=7.4", "black>=24.0", "ruff>=0.3", "nbformat>=5.9"]
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.black]
+line-length = 88
+target-version = ["py39"]
+
+[tool.ruff]
+line-length = 88
+target-version = "py39"
+src = ["src", "tests"]
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "B", "UP", "SIM"]
+ignore = ["E501"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["src"]
+
